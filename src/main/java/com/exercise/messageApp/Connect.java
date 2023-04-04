@@ -1,10 +1,11 @@
+package com.exercise.messageApp;
+
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
-public class Conexion {
+public class Connect {
     public Connection get_connection() {
         Connection conection = null;
 
