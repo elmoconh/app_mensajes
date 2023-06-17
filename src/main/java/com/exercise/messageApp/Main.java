@@ -2,17 +2,13 @@ package com.exercise.messageApp;
 
 import java.sql.Connection;
 import java.util.Scanner;
-
+import com.exercise.messageApp.Connect;
 
 public class Main {
     public static void main (String[] args){
-        /*Connect con = new Connect();
 
-        try (Connection cnx = con.get_connection()){
-            System.out.println("cnx: " + cnx);
-        }catch (Exception e){
-            System.out.println(e);
-        }*/
+        Connect con = new Connect();
+         con.get_connection();
 
         Scanner sc = new Scanner(System.in);
         int option = 0;
