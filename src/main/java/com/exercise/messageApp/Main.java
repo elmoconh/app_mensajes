@@ -1,11 +1,12 @@
 package com.exercise.messageApp;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Scanner;
 import com.exercise.messageApp.Connect;
 
 public class Main {
-    public static void main (String[] args){
+    public static void main (String[] args) throws SQLException {
 
         Connect con = new Connect();
          con.get_connection();

@@ -1,5 +1,7 @@
 package com.exercise.messageApp;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class messageServices {
@@ -22,7 +24,15 @@ public class messageServices {
         MesagesDAO.createMesageDB(register);
 
     }
-    public static void listMessages(){}
+    public static void listMessages() throws SQLException {
+        ResultSet results = MesagesDAO.readMessage();
+
+        while(results.next()){
+            System.out.println(results.getString("subject"));
+            System.out.println(results.getString("mensaje"));
+
+        }
+    }
     public static void deleteMessage(){}
     public static void editMessage(){}
 }

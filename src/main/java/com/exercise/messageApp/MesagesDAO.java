@@ -1,14 +1,17 @@
 package com.exercise.messageApp;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 
 public class MesagesDAO {
+    static Connect db_connect = new Connect();
+    static Connection  conn = db_connect.get_connection();
+    static PreparedStatement ps = null;
     public static void createMesageDB(Messages msg){
-        Connect db_connect = new Connect();
-        try(Connection conn = db_connect.get_connection()){
-            PreparedStatement ps = null;
+
             try{
                 String query="INSERT INTO mensajes ( mensaje, subject) VALUES (?,?)";
                 ps= conn.prepareStatement(query);
@@ -20,13 +23,19 @@ public class MesagesDAO {
                 System.out.println("Error");
                 System.out.println(ex);
             }
-
-
-        }catch (SQLException e){
-            System.out.println(e);
-        }
     }
-    public static void readMessage(){}
+    public static ResultSet readMessage(){
+        ResultSet rs = null;
+            try {
+                String query = "SELECT * FROM mensajes";
+                ps = conn.prepareStatement(query);
+                rs = ps.executeQuery();
+                return rs;
+            }catch (SQLException ex){
+                System.out.println(ex);
+            }
+        return rs;
+    }
     public static void insertMessage(){}
     public static void deleteMessage(){}
     public static void updateMessage(){}
