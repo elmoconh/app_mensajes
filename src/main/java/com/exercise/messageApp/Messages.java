@@ -6,7 +6,7 @@ public class Messages {
     String msg_author;
     String msg_date;
 
-    public Messages(){
+    public Messages() {
 
     }
 
