@@ -52,5 +52,29 @@ public class messageServices {
     }
 
     public static void editMessage() {
+        Integer id;
+        String msg;
+        Boolean validation = false;
+        Scanner scInt = new Scanner(System.in);
+        Scanner scString = new Scanner(System.in);
+
+        while (validation.equals(false)) {
+        System.out.println("Escriba un id");
+        id = scInt.nextInt();
+        validation = MesagesDAO.queryMessage(id);
+
+
+            if (validation.equals(true)) {
+                System.out.println("Escriba un mensaje");
+                msg = scString.nextLine();
+                MesagesDAO.updateMessage(id, msg);
+
+
+            } else {
+                System.out.println("Ingrese otro");
+
+            }
+
+        }
     }
 }

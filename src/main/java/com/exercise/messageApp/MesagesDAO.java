@@ -45,6 +45,22 @@ public class MesagesDAO {
         return msgs;
     }
 
+    public static boolean queryMessage(Integer id){
+        ResultSet rs=null;
+        try {
+            String query = "SELECT * FROM mensajes WHERE id_mensaje = ?";
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return false;
+    }
+
     public static boolean deleteMessage(Integer id) {
         Integer count;
         try {
@@ -61,6 +77,17 @@ public class MesagesDAO {
         return false;
     }
 
-    public static void updateMessage() {
+
+    public static void updateMessage(Integer id, String msg) {
+        try{
+            String query = "UPDATE mensajes set mensaje =? WHERE id_mensaje = ?";
+            ps = conn.prepareStatement(query);
+            ps.setString(1,msg);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+
+        }catch (SQLException ex){
+            System.out.println(ex);
+        }
     }
 }
